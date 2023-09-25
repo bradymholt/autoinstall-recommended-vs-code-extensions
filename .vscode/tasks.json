@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install All Recommended Extensions",
+      "type": "shell",
+      "windows": {
+        "command": "echo 'Not Supported on Windows'"
+      },
+      "command": "jq -r -s '[.[].recommendations[]] | unique | .[]' $(find ./ -maxdepth 3 -name extensions.json | xargs echo) | xargs -L 1 code --install-extension",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "silent"
+      }
+    }
+  ]
+}
